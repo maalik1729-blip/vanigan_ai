@@ -1,29 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/vanigan/Navbar";
+import { Hero } from "@/components/vanigan/Hero";
+import {
+  CategoryGrid, HowItWorks, StatsSection, FeaturedBusinesses,
+  CityExplorer, WhyVanigan, Testimonials, BlogPreview, CTABanner, Footer,
+} from "@/components/vanigan/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Vanigan.org — Tamil Nadu's Most Trusted Business Directory" },
+      { name: "description", content: "Discover 12,000+ verified businesses, service providers, and professionals across all 38 districts of Tamil Nadu. List your business free." },
+      { property: "og:title", content: "Vanigan.org — Tamil Nadu's Business Directory" },
+      { property: "og:description", content: "Discover verified businesses across Tamil Nadu. List your business free." },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main>
+      <Navbar />
+      <Hero />
+      <CategoryGrid />
+      <HowItWorks />
+      <StatsSection />
+      <FeaturedBusinesses />
+      <CityExplorer />
+      <WhyVanigan />
+      <Testimonials />
+      <BlogPreview />
+      <CTABanner />
+      <Footer />
+    </main>
   );
 }

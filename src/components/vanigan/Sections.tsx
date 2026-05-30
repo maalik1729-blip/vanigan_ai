@@ -326,7 +326,7 @@ export function BlogPreview() {
               key={p.title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
             >
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="img-zoom aspect-[16/10]">
                 <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
@@ -353,7 +353,7 @@ export function BlogPreview() {
 /* ============ [10] CTA Banner ============ */
 export function CTABanner() {
   return (
-    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.68 0.06 140) 0%, oklch(0.55 0.07 150) 100%)" }}>
+    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.78 0.085 75) 0%, oklch(0.86 0.06 78) 100%)" }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}

@@ -1,7 +1,8 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Epilogue:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -45,17 +46,17 @@
 :root {
   --radius: 0.75rem;
 
-  /* Bone & Cobalt palette */
-  --background: oklch(0.957 0.012 85);          /* #F2EFE8 bone */
-  --bg-section: oklch(0.93 0.014 85);           /* slightly deeper bone */
-  --sage: oklch(0.78 0.085 75);                 /* #D4A574 soft amber */
-  --sage-soft: oklch(0.86 0.06 78);             /* lighter amber */
-  --forest: oklch(0.27 0.10 270);               /* #1E2A5E deep cobalt */
-  --forest-deep: oklch(0.13 0.02 270);          /* #0A0A0A near-black */
+  /* Premium Slate Emerald & Soft Sage Mint Palette */
+  --background: oklch(0.985 0.005 160);         /* alabaster ice-white (subtle mint tint) */
+  --bg-section: oklch(0.96 0.008 160);          /* soft sage off-white */
+  --sage: oklch(0.68 0.14 160);                 /* premium slate emerald green */
+  --sage-soft: oklch(0.82 0.08 160);            /* soft ice-mint */
+  --forest: oklch(0.22 0.03 160);              /* deep spruce graphite */
+  --forest-deep: oklch(0.12 0.02 160);         /* pure matte spruce obsidian */
 
-  --foreground: oklch(0.15 0.015 270);
-  --text-light: oklch(0.957 0.012 85);
-  --text-muted: oklch(0.48 0.02 270);
+  --foreground: oklch(0.18 0.02 160);          /* deep spruce slate text */
+  --text-light: oklch(0.97 0.005 160);          /* minty cream light text */
+  --text-muted: oklch(0.52 0.015 160);          /* muted slate jade text */
 
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
@@ -71,8 +72,8 @@
   --accent-foreground: var(--forest-deep);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.014 85);
-  --input: oklch(0.88 0.014 85);
+  --border: oklch(0.91 0.008 160);              /* soft light jade border */
+  --input: oklch(0.91 0.008 160);
   --ring: var(--sage);
 }
 

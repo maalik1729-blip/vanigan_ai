@@ -21,23 +21,28 @@ export function Navbar() {
   return (
     <>
       {/* Floating pill navbar */}
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-between items-center px-4 pointer-events-none">
+        <a
+          href="#top"
+          className={`pointer-events-auto flex items-center gap-2 px-5 py-2.5 rounded-full border backdrop-blur-xl transition-all duration-500 ${
+            scrolled
+              ? "bg-black/85 border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+              : "bg-black/60 border-white/10 shadow-lg"
+          } text-sm font-display font-extrabold tracking-tight text-text-light`}
+        >
+          <span className="size-2 rounded-full bg-sage animate-pulse" />
+          <span>Vanigan<span className="text-sage font-medium">.org</span></span>
+        </a>
+
         <nav
           aria-label="Primary"
-          className={`pointer-events-auto flex items-center gap-2 rounded-full border border-white/15 px-2 py-2 backdrop-blur-xl transition-all duration-500 ${
+          className={`pointer-events-auto flex items-center gap-2 rounded-full border backdrop-blur-xl transition-all duration-500 ${
             scrolled
-              ? "bg-black/40 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)]"
-              : "bg-white/10"
+              ? "bg-black/85 border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+              : "bg-black/60 border-white/10 shadow-lg"
           }`}
           style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
         >
-          <a
-            href="#top"
-            className="px-4 py-2 text-[11px] font-semibold tracking-[0.22em] uppercase text-text-light"
-          >
-            VANIGAN<span className="text-sage">.ORG</span>
-          </a>
-
           <ul className="hidden md:flex items-center">
             {links.map((l) => (
               <li key={l.label}>
@@ -74,13 +79,14 @@ export function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="fixed inset-0 z-[60] bg-forest-deep flex flex-col p-6 md:hidden"
+          className="fixed inset-0 z-60 bg-forest-deep flex flex-col p-6 md:hidden"
           style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
         >
           <div className="flex justify-between items-center">
-            <span className="text-sm font-semibold tracking-[0.22em] uppercase text-text-light">
-              VANIGAN<span className="text-sage">.ORG</span>
-            </span>
+            <div className="flex items-center gap-2 text-lg font-display font-extrabold tracking-tight text-text-light">
+              <span className="size-2 rounded-full bg-sage animate-pulse" />
+              <span>Vanigan<span className="text-sage font-medium">.org</span></span>
+            </div>
             <button aria-label="Close menu" onClick={() => setOpen(false)} className="text-text-light p-2">
               <X className="size-6" />
             </button>

@@ -24,7 +24,7 @@ export function LoadingSequence() {
     <AnimatePresence>
       {!done && (
         <motion.div
-          className="fixed inset-0 z-[200] bg-forest-deep text-text-light flex flex-col items-center justify-center"
+          className="fixed inset-0 z-200 bg-forest-deep text-text-light flex flex-col items-center justify-center"
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
@@ -61,13 +61,13 @@ export function ScreenTransition() {
       {show && (
         <>
           <motion.div
-            className="fixed inset-0 z-[150] bg-sage origin-bottom"
+            className="fixed inset-0 z-150 bg-sage origin-bottom"
             initial={{ scaleY: 1 }}
             animate={{ scaleY: 0 }}
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
           />
           <motion.div
-            className="fixed inset-0 z-[149] bg-forest origin-bottom"
+            className="fixed inset-0 z-149 bg-forest origin-bottom"
             initial={{ scaleY: 1 }}
             animate={{ scaleY: 0 }}
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1.15 }}
@@ -103,7 +103,7 @@ export function FloatingNav() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
-          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[90] flex items-center gap-1 rounded-full bg-forest-deep/90 backdrop-blur-md border border-text-light/10 px-2 py-2 shadow-2xl"
+          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-90 flex items-center gap-1 rounded-full bg-forest-deep/90 backdrop-blur-md border border-text-light/10 px-2 py-2 shadow-2xl"
         >
           {items.map(({ label, href, Icon }) => (
             <a
@@ -191,7 +191,7 @@ export function HorizontalScrollCarousel() {
               }`}
             >
               <img src={s.img} alt={s.city} className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-forest-deep via-forest-deep/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
                 <p className="font-mono text-xs tracking-[0.3em] uppercase text-sage">{s.count} businesses</p>
                 <h3 className="mt-3 font-display font-black text-4xl md:text-6xl tracking-tight">{s.city}</h3>
@@ -237,7 +237,7 @@ export function AsymmetricSlider() {
             className={`shrink-0 ${s.w} ${s.h} ${i % 2 ? "mt-16" : "mt-0"} rounded-2xl overflow-hidden relative group img-zoom border border-border`}
           >
             <img src={s.img} alt={s.t} className="w-full h-full object-cover" draggable={false} />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-forest-deep/80 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5 text-text-light">
               <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-sage">{s.c}</p>
               <h3 className="mt-1 font-display font-bold text-xl">{s.t}</h3>
@@ -280,14 +280,14 @@ export function WebGLField() {
           const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
           const d = Math.hypot(dx, dy);
           if (d < 140 * devicePixelRatio) {
-            ctx.strokeStyle = `rgba(212,165,116,${1 - d / (140 * devicePixelRatio)})`;
+            ctx.strokeStyle = `rgba(101,196,155,${1 - d / (140 * devicePixelRatio)})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
           }
         }
       }
       for (const p of pts) {
-        ctx.fillStyle = "rgba(212,165,116,0.8)";
+        ctx.fillStyle = "rgba(101,196,155,0.8)";
         ctx.beginPath(); ctx.arc(p.x, p.y, 1.6 * devicePixelRatio, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(tick);
@@ -299,7 +299,7 @@ export function WebGLField() {
   return (
     <section className="relative h-[80vh] bg-forest-deep overflow-hidden">
       <canvas ref={ref} className="absolute inset-0 w-full h-full" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forest-deep" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-forest-deep" />
       <div className="relative h-full container-x flex flex-col justify-center text-text-light">
         <p className="section-label">[ The network ]</p>
         <h2 className="mt-3 font-display font-black text-4xl md:text-7xl tracking-tight max-w-4xl">
@@ -346,7 +346,7 @@ export function RenderPresentation() {
           </p>
         </div>
         <Tilt>
-          <div className="relative aspect-[4/5] rounded-3xl bg-gradient-to-br from-forest via-forest-deep to-forest p-8 text-text-light shadow-2xl border border-text-light/10">
+          <div className="relative aspect-4/5 rounded-3xl bg-linear-to-br from-forest via-forest-deep to-forest p-8 text-text-light shadow-2xl border border-text-light/10">
             <div className="absolute top-6 right-6 size-12 rounded-full bg-sage grid place-items-center text-forest-deep font-black">V</div>
             <div className="mt-12">
               <p className="font-mono text-xs tracking-[0.3em] uppercase text-sage">Verified</p>

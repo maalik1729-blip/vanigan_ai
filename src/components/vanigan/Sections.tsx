@@ -169,7 +169,7 @@ export function FeaturedBusinesses() {
             <div className="img-zoom absolute inset-0">
               <img src={hero.img} alt={hero.name} loading="lazy" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-forest-deep via-forest-deep/40 to-transparent" />
             <div className="relative h-full flex flex-col justify-end p-8 md:p-10 text-text-light min-h-[320px]">
               <span className="inline-block w-fit text-xs font-semibold uppercase tracking-[0.2em] text-sage">{hero.cat} · {hero.city}</span>
               <h3 className="mt-3 font-display font-black text-3xl md:text-5xl leading-tight">{hero.name}</h3>
@@ -189,7 +189,7 @@ export function FeaturedBusinesses() {
               key={b.name} custom={i + 1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="group bg-white rounded-3xl overflow-hidden border border-border hover:shadow-xl transition-shadow flex flex-col"
             >
-              <div className="img-zoom aspect-[16/10] lg:aspect-auto lg:flex-1">
+              <div className="img-zoom aspect-16/10 lg:aspect-auto lg:flex-1">
                 <img src={b.img} alt={b.name} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="p-5">
@@ -326,7 +326,7 @@ export function BlogPreview() {
               key={p.title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
             >
-              <div className="img-zoom aspect-[16/10]">
+              <div className="img-zoom aspect-16/10">
                 <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
@@ -353,7 +353,7 @@ export function BlogPreview() {
 /* ============ [10] CTA Banner ============ */
 export function CTABanner() {
   return (
-    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.78 0.085 75) 0%, oklch(0.86 0.06 78) 100%)" }}>
+    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.86 0.05 160) 0%, oklch(0.92 0.03 160) 100%)" }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}

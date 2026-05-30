@@ -35,13 +35,10 @@ function Index() {
       <FloatingNav />
       <ContactDock />
       <Navbar />
-      <Hero />
       <SpatialHero />
-      <MegaMarquee words={["Discover", "Connect", "Grow", "Tamil Nadu"]} outlined />
       <CategoryGrid />
       <MinimalistHierarchy />
       <HowItWorks />
-      <MegaMarquee words={["12,000+ Businesses", "38 Districts", "Verified"]} reverse outlined dark />
       <StatsSection />
       <NonPodiumGrid />
       <FeaturedBusinesses />

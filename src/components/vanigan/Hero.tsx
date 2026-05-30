@@ -10,9 +10,20 @@ const fadeUp = {
   }),
 };
 
+const tickerWords = ["Discover", "Connect", "Grow", "Tamil Nadu", "Verified", "12,000+ Businesses", "38 Districts"];
+
 export function Hero() {
   return (
     <section id="top" className="relative min-h-[100vh] bg-forest text-text-light overflow-hidden flex items-center -mt-20 pt-32 pb-20">
+      {/* Slow-zooming cobalt gradient backdrop */}
+      <div
+        className="absolute inset-0 animate-slow-zoom"
+        aria-hidden
+        style={{
+          background:
+            "radial-gradient(1200px 600px at 80% 10%, oklch(0.35 0.12 270 / 0.7), transparent 60%), radial-gradient(800px 500px at 10% 90%, oklch(0.4 0.08 270 / 0.5), transparent 60%)",
+        }}
+      />
       {/* Kolam-inspired SVG pattern */}
       <svg className="absolute inset-0 w-full h-full opacity-[0.06]" aria-hidden="true">
         <defs>
@@ -35,12 +46,13 @@ export function Hero() {
 
         <motion.h1
           variants={fadeUp} initial="hidden" animate="visible" custom={1}
-          className="mt-6 font-display font-extrabold leading-[1.05] text-5xl md:text-7xl lg:text-[80px] max-w-5xl"
+          className="mt-6 font-display font-black leading-[0.98] tracking-tight text-5xl md:text-7xl lg:text-[88px] max-w-5xl"
         >
           Tamil Nadu's
           <br />
-          <span className="italic font-bold text-sage">Most Trusted</span> Business Network.
+          <span className="italic font-bold shimmer">Most Trusted</span> Business Network.
         </motion.h1>
+
 
         <motion.p
           variants={fadeUp} initial="hidden" animate="visible" custom={2}

@@ -22,10 +22,10 @@ export function Navbar() {
     <>
       {/* Full-Width Frosted Glass Top Bar */}
       <header
-        className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-500 border-b ${
+        className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-500 border-b backdrop-blur-md ${
           scrolled
-            ? "bg-forest-deep/80 backdrop-blur-md border-white/5 shadow-lg h-16"
-            : "bg-transparent border-transparent h-20"
+            ? "bg-forest-deep/90 border-white/10 shadow-lg h-16"
+            : "bg-forest-deep/75 border-white/5 h-20"
         } flex items-center`}
       >
         <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">

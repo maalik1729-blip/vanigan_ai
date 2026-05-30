@@ -153,37 +153,59 @@ const businesses = [
 ];
 
 export function FeaturedBusinesses() {
+  const [hero, ...rest] = businesses;
   return (
     <section className="bg-bg-section py-20 md:py-24">
       <div className="container-x">
-        <SectionHead label="[05] Featured Listings" title={<>Top Verified Businesses.</>} />
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          {businesses.map((b, i) => (
+        <SectionHead label="[05] Featured Listings" title={<>Top Verified <span className="italic text-sage">Businesses.</span></>} />
+
+        {/* Bento grid: 1 large hero card + 2 stacked smaller cards */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-5 lg:h-[560px]">
+          {/* Hero card spans 2 cols × 2 rows */}
+          <motion.article
+            variants={fadeUp} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            className="relative lg:col-span-2 lg:row-span-2 rounded-3xl overflow-hidden border border-border bg-forest group"
+          >
+            <div className="img-zoom absolute inset-0">
+              <img src={hero.img} alt={hero.name} loading="lazy" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent" />
+            <div className="relative h-full flex flex-col justify-end p-8 md:p-10 text-text-light min-h-[320px]">
+              <span className="inline-block w-fit text-xs font-semibold uppercase tracking-[0.2em] text-sage">{hero.cat} · {hero.city}</span>
+              <h3 className="mt-3 font-display font-black text-3xl md:text-5xl leading-tight">{hero.name}</h3>
+              <p className="mt-3 max-w-md text-text-light/80 leading-relaxed">{hero.desc}</p>
+              <div className="mt-5 flex items-center gap-4">
+                <span className="inline-flex items-center gap-1 text-sm"><Star className="size-4 fill-sage text-sage" /> <span className="font-semibold">{hero.rating}</span></span>
+                <a href="#" className="inline-flex items-center gap-1 text-sm font-display font-bold link-underline">
+                  View Profile <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
+          </motion.article>
+
+          {/* Two smaller cards */}
+          {rest.map((b, i) => (
             <motion.article
-              key={b.name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+              key={b.name} custom={i + 1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              className="group bg-white rounded-3xl overflow-hidden border border-border hover:shadow-xl transition-shadow flex flex-col"
             >
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="img-zoom aspect-[16/10] lg:aspect-auto lg:flex-1">
                 <img src={b.img} alt={b.name} loading="lazy" className="w-full h-full object-cover" />
               </div>
-              <div className="p-6">
-                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-sage">{b.cat}</span>
-                <h3 className="mt-2 font-display font-bold text-xl">{b.name}</h3>
-                <p className="text-sm text-text-muted">{b.city}</p>
-                <div className="mt-2 flex items-center gap-1 text-sm">
-                  <Star className="size-4 fill-sage text-sage" />
-                  <span className="font-semibold">{b.rating}</span>
+              <div className="p-5">
+                <span className="inline-block text-xs font-semibold uppercase tracking-[0.18em] text-sage">{b.cat}</span>
+                <h3 className="mt-1.5 font-display font-bold text-lg">{b.name}</h3>
+                <div className="mt-1 flex items-center justify-between text-sm text-text-muted">
+                  <span>{b.city}</span>
+                  <span className="inline-flex items-center gap-1"><Star className="size-3.5 fill-sage text-sage" /> <span className="font-semibold text-foreground">{b.rating}</span></span>
                 </div>
-                <p className="mt-3 text-sm text-text-muted leading-relaxed">{b.desc}</p>
-                <a href="#" className="mt-4 inline-flex items-center gap-1 text-sm font-display font-bold text-forest hover:text-sage group">
-                  View Profile <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </motion.article>
           ))}
         </div>
+
         <div className="mt-10 text-center">
-          <a href="#" className="inline-flex items-center gap-1 font-display font-bold text-forest hover:text-sage">
+          <a href="#" className="inline-flex items-center gap-1 font-display font-bold text-forest hover:text-sage link-underline">
             View All Businesses <ArrowRight className="size-4" />
           </a>
         </div>
@@ -191,6 +213,7 @@ export function FeaturedBusinesses() {
     </section>
   );
 }
+
 
 /* ============ [06] Cities ============ */
 const cities = ["Chennai","Coimbatore","Madurai","Trichy","Salem","Vellore","Erode","Tirunelveli","Thanjavur","Kanchipuram","Ooty","Kumbakonam"];
@@ -303,7 +326,7 @@ export function BlogPreview() {
               key={p.title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
             >
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="img-zoom aspect-[16/10]">
                 <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
@@ -330,7 +353,7 @@ export function BlogPreview() {
 /* ============ [10] CTA Banner ============ */
 export function CTABanner() {
   return (
-    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.68 0.06 140) 0%, oklch(0.55 0.07 150) 100%)" }}>
+    <section id="cta" className="py-20 md:py-28" style={{ background: "linear-gradient(135deg, oklch(0.78 0.085 75) 0%, oklch(0.86 0.06 78) 100%)" }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}

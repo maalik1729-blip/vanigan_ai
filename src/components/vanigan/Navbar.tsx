@@ -20,19 +20,19 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating pill navbar */}
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 w-full">
-        <div
-          className={`w-full max-w-5xl flex items-center justify-between rounded-full border backdrop-blur-xl transition-all duration-500 px-6 py-2.5 ${
-            scrolled
-              ? "bg-forest-deep/85 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              : "bg-forest-deep/60 border-white/5 shadow-lg"
-          }`}
-        >
+      {/* Full-Width Frosted Glass Top Bar */}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-500 border-b ${
+          scrolled
+            ? "bg-forest-deep/80 backdrop-blur-md border-white/5 shadow-lg h-16"
+            : "bg-transparent border-transparent h-20"
+        } flex items-center`}
+      >
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#top"
-            className="flex items-center gap-2 text-sm font-display font-extrabold tracking-tight text-text-light hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 text-sm md:text-base font-display font-extrabold tracking-tight text-text-light hover:opacity-90 transition-opacity"
           >
             <span className="size-2 rounded-full bg-sage animate-pulse" />
             <span>Vanigan<span className="text-sage font-medium">.org</span></span>
@@ -54,11 +54,11 @@ export function Navbar() {
             </ul>
           </nav>
 
-          {/* Right CTA Button & Mobile Trigger */}
+          {/* Right Action CTA Button & Mobile Trigger */}
           <div className="flex items-center gap-3">
             <a
               href="#cta"
-              className="hidden sm:inline-flex items-center rounded-full bg-sage hover:bg-white text-forest-deep px-5 py-2 text-[10px] font-display font-bold tracking-[0.15em] uppercase transition-all duration-300 shadow-[0_4px_12px_rgba(101,196,155,0.2)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-[1.02] cursor-pointer"
+              className="hidden sm:inline-flex items-center rounded-full bg-sage hover:bg-white text-forest-deep px-5 py-2.5 text-[10px] font-display font-bold tracking-[0.15em] uppercase transition-all duration-300 shadow-[0_4px_12px_rgba(101,196,155,0.2)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-[1.02] cursor-pointer"
             >
               List Business
             </a>

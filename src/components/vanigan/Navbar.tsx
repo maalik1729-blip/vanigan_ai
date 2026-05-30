@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Home", href: "#top" },
-  { label: "Categories", href: "#categories" },
-  { label: "Cities", href: "#cities" },
-  { label: "Blog", href: "#blog" },
-  { label: "About", href: "#why" },
+  { label: "PLATFORM", href: "#categories" },
+  { label: "COMPANY", href: "#why" },
+  { label: "NEWSROOM", href: "#blog" },
 ];
 
 export function Navbar() {
@@ -22,27 +20,30 @@ export function Navbar() {
 
   return (
     <>
-      {/* Announcement bar */}
-      <div className="bg-sage text-text-light text-xs md:text-sm py-2 text-center font-medium">
-        🎉 Free business listings for Tamil Nadu SMEs — <a href="#cta" className="underline underline-offset-2">Get Started</a>
-      </div>
-
-      <header
-        className={`sticky top-0 z-50 transition-colors duration-300 ${
-          scrolled ? "bg-forest/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-        }`}
-      >
-        <nav aria-label="Primary" className="container-x flex items-center justify-between h-16 md:h-20">
-          <a href="#top" className="font-display font-extrabold text-xl md:text-2xl text-sage tracking-tight">
-            Vanigan<span className="text-text-light">.org</span>
+      {/* Floating pill navbar */}
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+        <nav
+          aria-label="Primary"
+          className={`pointer-events-auto flex items-center gap-2 rounded-full border border-white/15 px-2 py-2 backdrop-blur-xl transition-all duration-500 ${
+            scrolled
+              ? "bg-black/40 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)]"
+              : "bg-white/10"
+          }`}
+          style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+        >
+          <a
+            href="#top"
+            className="px-4 py-2 text-[11px] font-semibold tracking-[0.22em] uppercase text-text-light"
+          >
+            VANIGAN<span className="text-sage">.ORG</span>
           </a>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center">
             {links.map((l) => (
               <li key={l.label}>
                 <a
                   href={l.href}
-                  className="text-sm font-medium text-text-light/80 hover:text-sage transition-colors"
+                  className="px-4 py-2 text-[11px] font-semibold tracking-[0.22em] uppercase text-text-light/85 hover:text-text-light transition-colors"
                 >
                   {l.label}
                 </a>
@@ -50,29 +51,36 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-3">
-            <a
-              href="#cta"
-              className="hidden sm:inline-flex items-center rounded-full bg-sage hover:bg-sage-soft text-forest-deep font-bold text-sm px-5 py-2.5 transition-colors"
-            >
-              List Your Business
-            </a>
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setOpen(true)}
-              className="md:hidden text-text-light p-2"
-            >
-              <Menu className="size-6" />
-            </button>
-          </div>
+          <a
+            href="#cta"
+            className="ml-1 hidden sm:inline-flex items-center rounded-full bg-black text-text-light px-5 py-2.5 text-[11px] font-semibold tracking-[0.22em] uppercase hover:bg-forest-deep transition-colors"
+          >
+            WORK WITH US
+          </a>
+
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setOpen(true)}
+            className="md:hidden text-text-light p-2"
+          >
+            <Menu className="size-5" />
+          </button>
         </nav>
       </header>
 
+      {/* Spacer so content doesn't sit under the floating nav */}
+      <div aria-hidden className="h-20" />
+
       {/* Mobile menu */}
       {open && (
-        <div className="fixed inset-0 z-[60] bg-forest-deep flex flex-col p-6 md:hidden">
+        <div
+          className="fixed inset-0 z-[60] bg-forest-deep flex flex-col p-6 md:hidden"
+          style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+        >
           <div className="flex justify-between items-center">
-            <span className="font-display font-extrabold text-xl text-sage">Vanigan<span className="text-text-light">.org</span></span>
+            <span className="text-sm font-semibold tracking-[0.22em] uppercase text-text-light">
+              VANIGAN<span className="text-sage">.ORG</span>
+            </span>
             <button aria-label="Close menu" onClick={() => setOpen(false)} className="text-text-light p-2">
               <X className="size-6" />
             </button>
@@ -83,7 +91,7 @@ export function Navbar() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="font-display font-bold text-3xl text-text-light hover:text-sage"
+                  className="text-2xl font-semibold tracking-[0.22em] uppercase text-text-light hover:text-sage"
                 >
                   {l.label}
                 </a>
@@ -93,9 +101,9 @@ export function Navbar() {
           <a
             href="#cta"
             onClick={() => setOpen(false)}
-            className="mt-auto inline-flex justify-center rounded-full bg-sage text-forest-deep font-bold px-6 py-4"
+            className="mt-auto inline-flex justify-center rounded-full bg-black text-text-light px-6 py-4 text-xs font-semibold tracking-[0.22em] uppercase"
           >
-            List Your Business
+            WORK WITH US
           </a>
         </div>
       )}

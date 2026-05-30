@@ -21,56 +21,57 @@ export function Navbar() {
   return (
     <>
       {/* Floating pill navbar */}
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-between items-center px-4 pointer-events-none">
-        <a
-          href="#top"
-          className={`pointer-events-auto flex items-center gap-2 px-5 py-2.5 rounded-full border backdrop-blur-xl transition-all duration-500 ${
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 w-full">
+        <div
+          className={`w-full max-w-5xl flex items-center justify-between rounded-full border backdrop-blur-xl transition-all duration-500 px-6 py-2.5 ${
             scrolled
-              ? "bg-black/85 border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
-              : "bg-black/60 border-white/10 shadow-lg"
-          } text-sm font-display font-extrabold tracking-tight text-text-light`}
-        >
-          <span className="size-2 rounded-full bg-sage animate-pulse" />
-          <span>Vanigan<span className="text-sage font-medium">.org</span></span>
-        </a>
-
-        <nav
-          aria-label="Primary"
-          className={`pointer-events-auto flex items-center gap-2 rounded-full border backdrop-blur-xl transition-all duration-500 ${
-            scrolled
-              ? "bg-black/85 border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
-              : "bg-black/60 border-white/10 shadow-lg"
+              ? "bg-forest-deep/85 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+              : "bg-forest-deep/60 border-white/5 shadow-lg"
           }`}
-          style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
         >
-          <ul className="hidden md:flex items-center">
-            {links.map((l) => (
-              <li key={l.label}>
-                <a
-                  href={l.href}
-                  className="px-4 py-2 text-[11px] font-semibold tracking-[0.22em] uppercase text-text-light/85 hover:text-text-light transition-colors"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
+          {/* Logo */}
           <a
-            href="#cta"
-            className="ml-1 hidden sm:inline-flex items-center rounded-full bg-black text-text-light px-5 py-2.5 text-[11px] font-semibold tracking-[0.22em] uppercase hover:bg-forest-deep transition-colors"
+            href="#top"
+            className="flex items-center gap-2 text-sm font-display font-extrabold tracking-tight text-text-light hover:opacity-90 transition-opacity"
           >
-            WORK WITH US
+            <span className="size-2 rounded-full bg-sage animate-pulse" />
+            <span>Vanigan<span className="text-sage font-medium">.org</span></span>
           </a>
 
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setOpen(true)}
-            className="md:hidden text-text-light p-2"
-          >
-            <Menu className="size-5" />
-          </button>
-        </nav>
+          {/* Center Navigation Links */}
+          <nav aria-label="Primary" className="hidden md:flex items-center" style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}>
+            <ul className="flex items-center gap-1">
+              {links.map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    className="px-4 py-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-text-light/75 hover:text-sage hover:bg-white/5 rounded-full transition-all duration-200"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Right CTA Button & Mobile Trigger */}
+          <div className="flex items-center gap-3">
+            <a
+              href="#cta"
+              className="hidden sm:inline-flex items-center rounded-full bg-sage hover:bg-white text-forest-deep px-5 py-2 text-[10px] font-display font-bold tracking-[0.15em] uppercase transition-all duration-300 shadow-[0_4px_12px_rgba(101,196,155,0.2)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-[1.02] cursor-pointer"
+            >
+              List Business
+            </a>
+
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setOpen(true)}
+              className="md:hidden text-text-light p-2 hover:text-sage transition-colors cursor-pointer"
+            >
+              <Menu className="size-5" />
+            </button>
+          </div>
+        </div>
       </header>
 
       {/* Spacer so content doesn't sit under the floating nav */}

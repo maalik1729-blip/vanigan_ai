@@ -11,6 +11,7 @@ import {
   HorizontalScrollCarousel, AsymmetricSlider, WebGLField, RenderPresentation,
   MinimalistHierarchy, NonPodiumGrid,
 } from "@/components/vanigan/Effects2";
+import { ContactDock, SpatialHero } from "@/components/vanigan/Spatial";
 
 export const Route = createFileRoute("/")({
   head: () => ({

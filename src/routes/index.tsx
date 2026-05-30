@@ -33,8 +33,10 @@ function Index() {
       <ScreenTransition />
       <ScrollProgress />
       <FloatingNav />
+      <ContactDock />
       <Navbar />
       <Hero />
+      <SpatialHero />
       <MegaMarquee words={["Discover", "Connect", "Grow", "Tamil Nadu"]} outlined />
       <CategoryGrid />
       <MinimalistHierarchy />

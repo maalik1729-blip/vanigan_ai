@@ -1,0 +1,185 @@
+{
+  "analysis": "Detailed analysis of dummy/test business entries",
+  "total_businesses": 18424,
+  "fetched_sample": 60,
+  
+  "dummy_entries": [
+    {
+      "id": "6a141acae7ff4012792f162f",
+      "name": "07339112121212",
+      "listingCode": "LIST23893",
+      "description": "gjgjghjhjghjghjghjghjghj",
+      "category": "",
+      "phone": "4545454545",
+      "email": "jhjfhjghjfghjghjghj",
+      "district": "Chengalpattu",
+      "assembly": "Tambaram",
+      "createdAt": "2024-09-19T09:21:45.000Z",
+      "reason": "Random keyboard text, no category, fake phone"
+    },
+    {
+      "id": "6a141acae7ff4012792f1624",
+      "name": "07339164151",
+      "listingCode": "LIST23864",
+      "description": "dfffffffff",
+      "category": "",
+      "phone": "7339164151",
+      "email": "dfffffffff",
+      "district": "Chengalpattu",
+      "assembly": "Shozhinganallur",
+      "createdAt": "2024-09-12T09:36:01.000Z",
+      "reason": "Random keyboard text, no category, nonsense email"
+    },
+    {
+      "id": "6a141acae7ff4012792f162d",
+      "name": "07339164151",
+      "listingCode": "LIST23890",
+      "description": "kkkkkkkkkkkkkk",
+      "category": "",
+      "phone": "kkkkkkkkkk",
+      "email": "kkkkkkkkkkkkkkkkkkkk",
+      "district": "Chengalpattu",
+      "assembly": "Tambaram",
+      "createdAt": "2024-09-19T09:10:41.000Z",
+      "reason": "Random keyboard text, no category, non-numeric phone"
+    },
+    {
+      "id": "6a141acae7ff4012792f1626",
+      "name": "07339164151",
+      "listingCode": "LIST23866",
+      "description": "dfsfssfsgsfg",
+      "category": "",
+      "phone": "2222222222",
+      "email": "222222222222222",
+      "district": "Chengalpattu",
+      "assembly": "Shozhinganallur",
+      "createdAt": "2024-09-12T10:45:21.000Z",
+      "reason": "Random keyboard text, no category, repeated digits"
+    },
+    {
+      "id": "6a141acae7ff4012792f1648",
+      "name": "121212121",
+      "listingCode": "LIST23929",
+      "description": "ljljljjjljljljljjljljljljlj",
+      "category": "",
+      "phone": "ijoijjljlj",
+      "email": "ljljkljlkjlkjljljjljljlj",
+      "district": "Chengalpattu",
+      "assembly": "Tambaram",
+      "createdAt": "2024-09-26T09:42:19.000Z",
+      "reason": "Random keyboard text, no category, non-numeric phone"
+    }
+  ],
+
+  "suspicious_entries": [
+    {
+      "id": "6a141ac9e7ff4012792f0b44",
+      "name": "9cars & consulting",
+      "listingCode": "LIST19920",
+      "category": "Doctors",
+      "subCategory": "General Physicians",
+      "description": "used cars & bikes , buying & selling",
+      "reason": "Category mismatch - listed as Doctor but sells cars"
+    },
+    {
+      "id": "6a141ac2e7ff4012792edae0",
+      "name": "3ly Mask Dealer",
+      "listingCode": "LIST3623",
+      "category": "Doctors",
+      "subCategory": "General Physicians",
+      "description": "Face Mask Manufacturers Disposable Mask Manufacturers...",
+      "reason": "Category mismatch - listed as Doctor but is a mask dealer"
+    }
+  ],
+
+  "entries_with_missing_critical_data": [
+    {
+      "listingCode": "LIST9531",
+      "name": "\"GOKUL\" mobails & Electrical, cctv  installation",
+      "district": "",
+      "assembly": "",
+      "address": "",
+      "lat": "",
+      "lng": "",
+      "image": ""
+    },
+    {
+      "listingCode": "LIST9532",
+      "name": "\"GOKUL\" mobais @ Electrical works.",
+      "district": "",
+      "assembly": "",
+      "lat": "",
+      "lng": "",
+      "image": ""
+    },
+    {
+      "listingCode": "LIST6822",
+      "name": "100%Homemade Herbal Products",
+      "district": "",
+      "assembly": "",
+      "address": "",
+      "lat": "",
+      "lng": ""
+    },
+    {
+      "listingCode": "LIST7395",
+      "name": "150 Organic  Products",
+      "district": "",
+      "assembly": "",
+      "address": "",
+      "lat": "",
+      "lng": "",
+      "image": ""
+    }
+  ],
+
+  "entries_with_special_characters": [
+    {
+      "listingCode": "LIST5623",
+      "name": "???????? ???????? ??? & ????? ???????",
+      "description": "????????? ??????? ?????? ?????????????????...",
+      "reason": "Encoding issue - shows question marks instead of Tamil text"
+    },
+    {
+      "listingCode": "LIST5643",
+      "name": "??????????? ?????? ?????",
+      "description": "?????? ??????????? ??????? ?????? ?????? ???? ??????????",
+      "reason": "Encoding issue - shows question marks instead of Tamil text"
+    },
+    {
+      "listingCode": "LIST8070",
+      "name": "???SACHIN DRESS WORLD???",
+      "description": "AVAILABLE IN MENS@LADIES KIDS DRESS...",
+      "reason": "Encoding issue - shows question marks"
+    }
+  ],
+
+  "summary": {
+    "confirmed_dummy_test_entries": 5,
+    "category_mismatch_entries": 2,
+    "incomplete_data_entries": 4,
+    "encoding_issue_entries": 3,
+    "total_problematic_entries_in_sample": 14,
+    "percentage_of_sample": "23.3%",
+    "estimated_problematic_in_database": "Approximately 4,293 entries (23.3% of 18,424)"
+  },
+
+  "recommendations": [
+    "1. Delete the 5 confirmed dummy/test entries (LIST23864, LIST23866, LIST23890, LIST23893, LIST23929)",
+    "2. Fix category mismatches - recategorize 'Doctors' entries that are actually product dealers",
+    "3. Fix character encoding for Tamil text entries",
+    "4. Add validation to require: district, assembly, category for all new entries",
+    "5. Consider marking entries with missing critical data as inactive until completed",
+    "6. Add data quality checks before allowing business listings to go live"
+  ],
+
+  "filter_criteria_to_hide_dummy_data": {
+    "frontend_filters": [
+      "Hide entries where category is empty/null",
+      "Hide entries where description contains only repeated characters",
+      "Hide entries where phone is non-numeric",
+      "Hide entries where email doesn't contain @ symbol",
+      "Hide entries created in test date ranges (Sept 2024 entries from Chengalpattu with no category)"
+    ]
+  }
+}

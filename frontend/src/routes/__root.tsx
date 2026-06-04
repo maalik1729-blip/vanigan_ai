@@ -77,14 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { httpEquiv: "Content-Type", content: "text/html; charset=utf-8" },
+      { title: "Vanigan.org - Tamil Nadu Business Directory" },
+      { name: "description", content: "Browse 18,000+ verified businesses across Tamil Nadu. தமிழ்நாடு வணிக கோவை" },
+      { name: "author", content: "Vanigan.org" },
+      { property: "og:title", content: "Vanigan.org - Tamil Nadu Business Directory" },
+      { property: "og:description", content: "Browse verified businesses across Tamil Nadu" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Vanigan" },
     ],
     links: [
       {

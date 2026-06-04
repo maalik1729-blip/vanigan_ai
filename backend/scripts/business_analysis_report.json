@@ -1,0 +1,563 @@
+{
+  "summary": {
+    "total": 60,
+    "dummyCount": 6,
+    "dummyPercent": "10.0%",
+    "noImageCount": 51,
+    "noImagePercent": "85.0%",
+    "hasImageCount": 9,
+    "repeatedImageGroups": 0,
+    "totalWithRepeatedImages": 0
+  },
+  "dummyEntries": [
+    {
+      "_id": "6a141acae7ff4012792f162f",
+      "listingCode": "LIST23893",
+      "name": "07339112121212",
+      "category": "",
+      "district": "Chengalpattu",
+      "phone": "4545454545",
+      "description": "gjgjghjhjghjghjghjghjghj",
+      "reasons": [
+        "name_is_gibberish_or_phone",
+        "description_is_gibberish",
+        "no_category_numeric_name"
+      ]
+    },
+    {
+      "_id": "6a141acae7ff4012792f162d",
+      "listingCode": "LIST23890",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "phone": "kkkkkkkkkk",
+      "description": "kkkkkkkkkkkkkk",
+      "reasons": [
+        "name_is_gibberish_or_phone",
+        "description_is_gibberish",
+        "email_is_gibberish",
+        "no_category_numeric_name"
+      ]
+    },
+    {
+      "_id": "6a141acae7ff4012792f1624",
+      "listingCode": "LIST23864",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "phone": "7339164151",
+      "description": "dfffffffff",
+      "reasons": [
+        "name_is_gibberish_or_phone",
+        "phone2_is_test_number",
+        "email_is_gibberish",
+        "no_category_numeric_name"
+      ]
+    },
+    {
+      "_id": "6a141acae7ff4012792f1626",
+      "listingCode": "LIST23866",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "phone": "2222222222",
+      "description": "dfsfssfsgsfg",
+      "reasons": [
+        "name_is_gibberish_or_phone",
+        "phone_is_test_number",
+        "phone2_is_test_number",
+        "email_is_gibberish",
+        "no_category_numeric_name"
+      ]
+    },
+    {
+      "_id": "6a141acae7ff4012792f1648",
+      "listingCode": "LIST23929",
+      "name": "121212121",
+      "category": "",
+      "district": "Chengalpattu",
+      "phone": "ijoijjljlj",
+      "description": "ljljljjjljljljljjljljljljlj",
+      "reasons": [
+        "name_is_gibberish_or_phone",
+        "description_is_gibberish",
+        "email_is_gibberish",
+        "no_category_numeric_name"
+      ]
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0b44",
+      "listingCode": "LIST19920",
+      "name": "9cars & consulting",
+      "category": "Doctors",
+      "district": "Ranipet",
+      "phone": "7373731881",
+      "description": "used cars & bikes , buying & selling",
+      "reasons": [
+        "wrong_category"
+      ]
+    }
+  ],
+  "noImageBusinesses": [
+    {
+      "_id": "6a141ac5e7ff4012792eed95",
+      "listingCode": "LIST9531",
+      "name": "\"GOKUL\" mobails & Electrical, cctv  installation",
+      "category": "Electricals & Electronics",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?electronics%20shop&sig=217"
+    },
+    {
+      "_id": "6a141ac5e7ff4012792eed96",
+      "listingCode": "LIST9532",
+      "name": "\"GOKUL\" mobais @ Electrical works.",
+      "category": "Electricals & Electronics",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?electronics%20shop&sig=909"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0831",
+      "listingCode": "LIST18867",
+      "name": "\"THE MASTER'S TOUCH\"",
+      "category": "Construction Materials",
+      "district": "Thanjavur",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?construction%20materials&sig=326"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f046d",
+      "listingCode": "LIST17546",
+      "name": "#விறகுஅடுப்பு ,#ராக்கெட்அடுப்பு,#பயோஅடுப்பு,#எகோஅடுப்பு",
+      "category": "Agriculture",
+      "district": "Thiruvallur",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?agriculture%20farm&sig=912"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f012f",
+      "listingCode": "LIST16455",
+      "name": "(CS)CROMSEN",
+      "category": "B2B Services",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=766"
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0b0a",
+      "listingCode": "LIST19836",
+      "name": ".PVC doors",
+      "category": "Construction Materials",
+      "district": "Dharmapuri",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?construction%20materials&sig=862"
+    },
+    {
+      "_id": "6a141acae7ff4012792f162f",
+      "listingCode": "LIST23893",
+      "name": "07339112121212",
+      "category": "",
+      "district": "Chengalpattu",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=707"
+    },
+    {
+      "_id": "6a141acae7ff4012792f162d",
+      "listingCode": "LIST23890",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=568"
+    },
+    {
+      "_id": "6a141acae7ff4012792f1624",
+      "listingCode": "LIST23864",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=568"
+    },
+    {
+      "_id": "6a141acae7ff4012792f1626",
+      "listingCode": "LIST23866",
+      "name": "07339164151",
+      "category": "",
+      "district": "Chengalpattu",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=568"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0582",
+      "listingCode": "LIST17912",
+      "name": "11 star tailor",
+      "category": "Textiles & Garments",
+      "district": "Chengalpattu",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?textile%20garment%20shop&sig=255"
+    },
+    {
+      "_id": "6a141acae7ff4012792f1648",
+      "listingCode": "LIST23929",
+      "name": "121212121",
+      "category": "",
+      "district": "Chengalpattu",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=445"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee766",
+      "listingCode": "LIST7397",
+      "name": "150 Organic  Products",
+      "category": "Organic Products",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?organic%20food&sig=805"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee765",
+      "listingCode": "LIST7395",
+      "name": "150 Organic  Products",
+      "category": "Organic Products",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?organic%20food&sig=805"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee76c",
+      "listingCode": "LIST7404",
+      "name": "150 Organic products",
+      "category": "Organic Products",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?organic%20food&sig=805"
+    },
+    {
+      "_id": "6a141ac6e7ff4012792ef383",
+      "listingCode": "LIST11562",
+      "name": "2020 Mobiles",
+      "category": "Electricals & Electronics",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?electronics%20shop&sig=943"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792eeaaf",
+      "listingCode": "LIST8483",
+      "name": "2020toursandtravels",
+      "category": "Transport",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?transport%20taxi&sig=845"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f05a9",
+      "listingCode": "LIST17958",
+      "name": "24 hours secret cosmetics",
+      "category": "Spa & Beauty",
+      "district": "Nagapattinam",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?beauty%20salon%20spa&sig=375"
+    },
+    {
+      "_id": "6a141acae7ff4012792f137e",
+      "listingCode": "LIST22742",
+      "name": "24Medias Event Management",
+      "category": "Caterers",
+      "district": "Chengalpattu",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?catering%20food&sig=296"
+    },
+    {
+      "_id": "6a141acae7ff4012792f137d",
+      "listingCode": "LIST22741",
+      "name": "24medias",
+      "category": "Caterers",
+      "district": "Chengalpattu",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?catering%20food&sig=729"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f03de",
+      "listingCode": "LIST17373",
+      "name": "27 மூலிகை சாம்பிராணி",
+      "category": "Organic Products",
+      "district": "Thanjavur",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?organic%20food&sig=115"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee758",
+      "listingCode": "LIST7377",
+      "name": "2M engineering",
+      "category": "B2B Services",
+      "district": "Chengalpattu",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=322"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee793",
+      "listingCode": "LIST7447",
+      "name": "3 Star Mirrors",
+      "category": "B2B Services",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=275"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0370",
+      "listingCode": "LIST17223",
+      "name": "3d flooring",
+      "category": "Civil Contractors",
+      "district": "Nagapattinam",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?construction%20building&sig=47"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0266",
+      "listingCode": "LIST16878",
+      "name": "3d flooring",
+      "category": "Civil Contractors",
+      "district": "Kancheepuram",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?construction%20building&sig=47"
+    },
+    {
+      "_id": "6a141ac2e7ff4012792edae0",
+      "listingCode": "LIST3623",
+      "name": "3ly Mask Dealer",
+      "category": "Doctors",
+      "district": "Chennai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?medical%20clinic&sig=329"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee649",
+      "listingCode": "LIST7038",
+      "name": "3s- The Sign Shoppe",
+      "category": "Printing Services",
+      "district": "Chennai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?printing%20shop&sig=620"
+    },
+    {
+      "_id": "6a141ac5e7ff4012792eecb6",
+      "listingCode": "LIST9199",
+      "name": "4 star water",
+      "category": "Daily Needs",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?grocery%20store&sig=105"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f02bf",
+      "listingCode": "LIST16993",
+      "name": "5 Rupees Packing Products",
+      "category": "B2B Services",
+      "district": "Coimbatore",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=330"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f05ce",
+      "listingCode": "LIST18005",
+      "name": "5 STAR TRAVELS",
+      "category": "Transport",
+      "district": "Chennai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?transport%20taxi&sig=976"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee702",
+      "listingCode": "LIST7266",
+      "name": "5&2 Digital Services",
+      "category": "IT & Software",
+      "district": "Thiruvallur",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?technology%20software&sig=743"
+    },
+    {
+      "_id": "6a141ac5e7ff4012792ef03e",
+      "listingCode": "LIST10463",
+      "name": "500 RUPEES SHOP",
+      "category": "Textiles & Garments",
+      "district": "Madurai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?textile%20garment%20shop&sig=995"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee920",
+      "listingCode": "LIST7976",
+      "name": "5ive *Star Communication",
+      "category": "Electricals & Electronics",
+      "district": "Tirunelveli",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?electronics%20shop&sig=259"
+    },
+    {
+      "_id": "6a141ac5e7ff4012792ef2bd",
+      "listingCode": "LIST11320",
+      "name": "5k food care(Wholesale & Retail)",
+      "category": "B2B Services",
+      "district": "Tiruvannamalai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=783"
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0cc8",
+      "listingCode": "LIST20446",
+      "name": "6TE BUILDERS",
+      "category": "Real Estate",
+      "district": "Coimbatore",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?real%20estate%20house&sig=841"
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0c43",
+      "listingCode": "LIST20282",
+      "name": "6TE BUILDINGS",
+      "category": "B2B Services",
+      "district": "Coimbatore",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=912"
+    },
+    {
+      "_id": "6a141ac0e7ff4012792ed253",
+      "listingCode": "LIST1152",
+      "name": "7 Star Balloon Decoration",
+      "category": "Wedding Services",
+      "district": "Chennai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?wedding%20decoration&sig=304"
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0ff7",
+      "listingCode": "LIST21571",
+      "name": "7Days Bakery & Arabian Sweets",
+      "category": "Hotels & Restaurants",
+      "district": "Tenkasi",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?restaurant%20food&sig=549"
+    },
+    {
+      "_id": "6a141acae7ff4012792f167e",
+      "listingCode": "LIST24003",
+      "name": "7heavan gadgets",
+      "category": "B2B Services",
+      "district": "Tiruppur",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=449"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f07f5",
+      "listingCode": "LIST18776",
+      "name": "8square Chess Academy",
+      "category": "Education",
+      "district": "Chennai",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?education%20classroom&sig=971"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0541",
+      "listingCode": "LIST17831",
+      "name": "8x Building Solutions",
+      "category": "Construction Materials",
+      "district": "Virudhunagar",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?construction%20materials&sig=30"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee4fb",
+      "listingCode": "LIST6633",
+      "name": "90 DEGREE PRIDE HOMES PRIVATE LIMITED",
+      "category": "Hotels & Restaurants",
+      "district": "Salem",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?restaurant%20food&sig=504"
+    },
+    {
+      "_id": "6a141ac5e7ff4012792ef341",
+      "listingCode": "LIST11487",
+      "name": "90's coffee bar",
+      "category": "Hotels & Restaurants",
+      "district": "Tiruchirapalli",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?restaurant%20food&sig=248"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f040d",
+      "listingCode": "LIST17432",
+      "name": "90. kids மிட்டாய் வியாபாரம்",
+      "category": "B2B Services",
+      "district": "Tirunelveli",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20meeting&sig=656"
+    },
+    {
+      "_id": "6a141ac8e7ff4012792f0576",
+      "listingCode": "LIST17898",
+      "name": "96",
+      "category": "Hotels & Restaurants",
+      "district": "Chengalpattu",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?restaurant%20food&sig=111"
+    },
+    {
+      "_id": "6a141ac9e7ff4012792f0b44",
+      "listingCode": "LIST19920",
+      "name": "9cars & consulting",
+      "category": "Doctors",
+      "district": "Ranipet",
+      "isDummy": true,
+      "suggestedImage": "https://source.unsplash.com/400x300/?medical%20clinic&sig=678"
+    },
+    {
+      "_id": "6a141ac3e7ff4012792ee1e4",
+      "listingCode": "LIST5623",
+      "name": "???????? ???????? ??? & ????? ???????",
+      "category": "",
+      "district": "",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=151"
+    },
+    {
+      "_id": "6a141ac3e7ff4012792ee1f0",
+      "listingCode": "LIST5643",
+      "name": "??????????? ?????? ?????",
+      "category": "",
+      "district": "Kallakuruchi",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?business%20shop&sig=450"
+    },
+    {
+      "_id": "6a141ac4e7ff4012792ee960",
+      "listingCode": "LIST8070",
+      "name": "???SACHIN DRESS WORLD???",
+      "category": "Textiles & Garments",
+      "district": "Krishnagiri",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?textile%20garment%20shop&sig=657"
+    },
+    {
+      "_id": "6a141ac1e7ff4012792ed9b8",
+      "listingCode": "LIST3287",
+      "name": "A - Star Education Consultancy",
+      "category": "Education",
+      "district": "Kanniyakumari",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?education%20classroom&sig=743"
+    },
+    {
+      "_id": "6a141abbe7ff4012792ecf63",
+      "listingCode": "LIST340",
+      "name": "A 1 Active Beauty Parlour",
+      "category": "Spa & Beauty",
+      "district": "Kancheepuram",
+      "isDummy": false,
+      "suggestedImage": "https://source.unsplash.com/400x300/?beauty%20salon%20spa&sig=205"
+    }
+  ],
+  "repeatedImages": []
+}

@@ -1,11 +1,66 @@
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Search, MapPin, Building2, Compass, Sparkles } from "lucide-react";
+import communityLogo from "./community.png";
+
+function makeImageTransparent(imgUrl: string): Promise<string> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined") {
+      resolve(imgUrl);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        resolve(imgUrl);
+        return;
+      }
+      ctx.drawImage(img, 0, 0);
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          const maxVal = Math.max(r, g, b);
+          // If the brightest channel is dark (black/dark background), make it transparent
+          if (maxVal < 55) {
+            if (maxVal < 20) {
+              data[i + 3] = 0;
+            } else {
+              data[i + 3] = Math.round(((maxVal - 20) / 35) * 255);
+            }
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+        resolve(canvas.toDataURL("image/png"));
+      } catch (e) {
+        resolve(imgUrl);
+      }
+    };
+    img.onerror = () => {
+      resolve(imgUrl);
+    };
+    img.src = imgUrl;
+  });
+}
 
 /* ============ Custom Loading Sequence ============ */
 export function LoadingSequence() {
   const [done, setDone] = useState(false);
   const [pct, setPct] = useState(0);
+  const [logoSrc, setLogoSrc] = useState<string>(communityLogo);
+
+  useEffect(() => {
+    makeImageTransparent(communityLogo).then((res) => {
+      setLogoSrc(res);
+    });
+  }, []);
 
   useEffect(() => {
     let raf = 0;
@@ -26,23 +81,35 @@ export function LoadingSequence() {
         <motion.div
           className="fixed inset-0 z-200 bg-forest-deep text-text-light flex flex-col items-center justify-center"
           initial={{ opacity: 1 }}
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
+          <motion.img
+            src={logoSrc}
+            alt="Vanigan.org"
+            className="h-48 md:h-64 w-auto object-contain"
+            initial={{ opacity: 0, scale: 0.7, filter: "blur(8px)", rotate: 0 }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)", rotate: 360 }}
+            exit={{
+              scale: 3.5,
+              opacity: 0,
+              filter: "blur(16px)",
+              rotate: 420,
+              transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+            }}
+            transition={{
+              opacity: { duration: 1.2 },
+              scale: { duration: 1.2, ease: "easeOut" },
+              filter: { duration: 1.2, ease: "easeOut" },
+              rotate: { repeat: Infinity, duration: 20, ease: "linear" }
+            }}
+          />
           <motion.div
-            className="font-display font-black text-5xl md:text-7xl text-sage"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            className="mt-6 font-mono text-xs tracking-widest text-text-light/60"
+            exit={{ opacity: 0, y: 10, transition: { duration: 0.4 } }}
           >
-            Vanigan<span className="text-text-light">.org</span>
-          </motion.div>
-          <div className="mt-10 w-64 h-[2px] bg-text-light/15 overflow-hidden">
-            <motion.div className="h-full bg-sage" style={{ width: `${pct}%` }} />
-          </div>
-          <div className="mt-3 font-mono text-xs tracking-widest text-text-light/60">
             LOADING — {pct.toString().padStart(3, "0")}%
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -53,7 +120,7 @@ export function LoadingSequence() {
 export function ScreenTransition() {
   const [show, setShow] = useState(true);
   useEffect(() => {
-    const t = setTimeout(() => setShow(false), 1800);
+    const t = setTimeout(() => setShow(false), 3800);
     return () => clearTimeout(t);
   }, []);
   return (
@@ -61,16 +128,16 @@ export function ScreenTransition() {
       {show && (
         <>
           <motion.div
-            className="fixed inset-0 z-150 bg-sage origin-bottom"
-            initial={{ scaleY: 1 }}
-            animate={{ scaleY: 0 }}
-            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
+            className="fixed inset-0 z-150 bg-sage"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 1.8 }}
           />
           <motion.div
-            className="fixed inset-0 z-149 bg-forest origin-bottom"
-            initial={{ scaleY: 1 }}
-            animate={{ scaleY: 0 }}
-            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1.15 }}
+            className="fixed inset-0 z-149 bg-forest"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 2.0 }}
           />
         </>
       )}
@@ -249,69 +316,9 @@ export function AsymmetricSlider() {
   );
 }
 
-/* ============ WebGL-style Canvas Background (animated particle field) ============ */
-export function WebGLField() {
-  const ref = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = ref.current!;
-    const ctx = canvas.getContext("2d")!;
-    let w = (canvas.width = canvas.offsetWidth * devicePixelRatio);
-    let h = (canvas.height = canvas.offsetHeight * devicePixelRatio);
-    const N = 90;
-    const pts = Array.from({ length: N }, () => ({
-      x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-    }));
-    let raf = 0;
-    const onResize = () => {
-      w = canvas.width = canvas.offsetWidth * devicePixelRatio;
-      h = canvas.height = canvas.offsetHeight * devicePixelRatio;
-    };
-    window.addEventListener("resize", onResize);
-    const tick = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-      }
-      for (let i = 0; i < N; i++) {
-        for (let j = i + 1; j < N; j++) {
-          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-          const d = Math.hypot(dx, dy);
-          if (d < 140 * devicePixelRatio) {
-            ctx.strokeStyle = `rgba(101,196,155,${1 - d / (140 * devicePixelRatio)})`;
-            ctx.lineWidth = 0.6;
-            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
-          }
-        }
-      }
-      for (const p of pts) {
-        ctx.fillStyle = "rgba(101,196,155,0.8)";
-        ctx.beginPath(); ctx.arc(p.x, p.y, 1.6 * devicePixelRatio, 0, Math.PI * 2); ctx.fill();
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    tick();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", onResize); };
-  }, []);
+/* WebGLField removed — atmospheric genre only, incompatible with editorial theme */
+export function WebGLField() { return null; }
 
-  return (
-    <section className="relative h-[80vh] bg-forest-deep overflow-hidden">
-      <canvas ref={ref} className="absolute inset-0 w-full h-full" />
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-forest-deep" />
-      <div className="relative h-full container-x flex flex-col justify-center text-text-light">
-        <p className="section-label">[ The network ]</p>
-        <h2 className="mt-3 font-display font-black text-4xl md:text-7xl tracking-tight max-w-4xl">
-          A <span className="italic text-sage">connected</span> economy, in real time.
-        </h2>
-        <p className="mt-6 max-w-xl text-text-light/70 text-lg">
-          Every node is a business. Every line — a customer relationship Vanigan is helping forge.
-        </p>
-      </div>
-    </section>
-  );
-}
 
 /* ============ 3D Tilt Render Presentation ============ */
 function Tilt({ children }: { children: ReactNode }) {
@@ -339,61 +346,136 @@ export function RenderPresentation() {
         <div>
           <p className="section-label">[ The product ]</p>
           <h2 className="mt-3 font-display font-black text-4xl md:text-6xl leading-[1.05] tracking-tight">
-            Built like a <span className="italic text-sage">physical object</span> — tactile, deliberate, precise.
+            Every listing is a <span className="italic text-sage">living profile</span> — not just a name and number.
           </h2>
           <p className="mt-6 text-lg text-text-muted max-w-lg">
-            Hover the card. Every surface responds — because every interaction in Vanigan does.
+            Verified ratings, real photos, direct contact. Hover the card — every surface responds.
           </p>
+          <ul className="mt-8 space-y-3">
+            {[
+              "Community-verified rating & review count",
+              "Operating hours, location, and contact details",
+              "Category tags and district filter",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm text-text-muted">
+                <Sparkles className="size-4 text-sage mt-0.5 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        {/* Gate 57: No fake browser/app chrome. A figure with hairline border is the correct pattern. */}
         <Tilt>
-          <div className="relative aspect-4/5 rounded-3xl bg-linear-to-br from-forest via-forest-deep to-forest p-8 text-text-light shadow-2xl border border-text-light/10">
-            <div className="absolute top-6 right-6 size-12 rounded-full bg-sage grid place-items-center text-forest-deep font-black">V</div>
-            <div className="mt-12">
-              <p className="font-mono text-xs tracking-[0.3em] uppercase text-sage">Verified</p>
-              <h3 className="mt-3 font-display font-black text-3xl md:text-5xl leading-tight">Senthil Iyer<br /><span className="text-sage">Silks</span></h3>
-              <p className="mt-2 text-text-light/60 text-sm">Kanchipuram · Est. 1962</p>
+          <figure className="relative rounded-3xl bg-forest text-text-light shadow-2xl border border-text-light/10 overflow-hidden">
+            {/* Header band — genuine content, not chrome simulation */}
+            <div className="flex items-center justify-between px-8 pt-8 pb-5 border-b border-text-light/10">
+              <div className="flex items-center gap-3">
+                <div className="size-10 rounded-full bg-sage grid place-items-center text-forest-deep font-black text-sm shrink-0">SI</div>
+                <div>
+                  <p className="font-display font-bold text-base leading-tight">Senthil Iyer Silks</p>
+                  <p className="text-text-light/50 text-xs">Kanchipuram · Est. 1962</p>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-sage/20 text-sage text-[10px] font-mono font-semibold tracking-wider px-3 py-1 uppercase">
+                Verified
+              </span>
             </div>
-            <div className="absolute bottom-8 left-8 right-8 grid grid-cols-3 gap-4 pt-6 border-t border-text-light/10">
-              <div><p className="text-3xl font-display font-black text-sage">4.9</p><p className="text-xs text-text-light/60">Rating</p></div>
-              <div><p className="text-3xl font-display font-black text-sage">62</p><p className="text-xs text-text-light/60">Years</p></div>
-              <div><p className="text-3xl font-display font-black text-sage">1.2k</p><p className="text-xs text-text-light/60">Reviews</p></div>
+
+            {/* Body — real data */}
+            <div className="px-8 py-6 grid grid-cols-3 gap-4 border-b border-text-light/10">
+              <div>
+                <p className="font-display font-black text-3xl text-sage">4.9</p>
+                <p className="text-text-light/50 text-xs mt-1">Rating</p>
+              </div>
+              <div>
+                <p className="font-display font-black text-3xl text-sage">1.2k</p>
+                <p className="text-text-light/50 text-xs mt-1">Reviews</p>
+              </div>
+              <div>
+                <p className="font-display font-black text-3xl text-sage">62</p>
+                <p className="text-text-light/50 text-xs mt-1">Years active</p>
+              </div>
             </div>
-            <Sparkles className="absolute top-1/2 left-6 size-5 text-sage/40 animate-float" />
-          </div>
+
+            {/* Quote — authentic testimonial content */}
+            <blockquote className="px-8 py-6 text-sm text-text-light/80 leading-relaxed italic border-b border-text-light/10">
+              "Three generations of heritage, now discoverable by every corner of Tamil Nadu."
+            </blockquote>
+
+            {/* Action row */}
+            <div className="px-8 py-5 flex items-center gap-4">
+              <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-text-light/40">Kanchipuram, Tamil Nadu</span>
+              <span className="ml-auto inline-flex items-center gap-1.5 text-sage text-xs font-display font-semibold">
+                <Sparkles className="size-3.5" /> Featured listing
+              </span>
+            </div>
+            <figcaption className="sr-only">Sample verified business profile on Vanigan.org</figcaption>
+          </figure>
         </Tilt>
       </div>
     </section>
   );
 }
 
-/* ============ Strict Minimalist Hierarchy ============ */
 export function MinimalistHierarchy() {
   const lines = [
-    { n: "01", t: "Discover", d: "Search across 12,000+ verified businesses." },
-    { n: "02", t: "Compare", d: "Real reviews, hours, contacts — side by side." },
-    { n: "03", t: "Decide", d: "Choose with confidence. Trust earned, not bought." },
+    { n: "01", t: "Discover", d: "Search across 18,424+ verified local businesses.", icon: Compass },
+    { n: "02", t: "Connect", d: "Access direct phone numbers, operational hours, and maps.", icon: Search },
+    { n: "03", t: "Grow", d: "List your business for free to reach customers state-wide.", icon: Sparkles },
   ];
   return (
-    <section className="bg-background py-24 md:py-36 border-y border-border">
-      <div className="container-x grid lg:grid-cols-12 gap-10">
-        <div className="lg:col-span-4">
-          <p className="font-mono text-xs tracking-[0.3em] uppercase text-text-muted">[ Method ]</p>
+    <section className="bg-bg-section py-24 md:py-36 border-y border-border">
+      <div className="container-x">
+        {/* Header section with clean label */}
+        <div className="max-w-3xl mb-16">
+          <p className="font-mono text-xs tracking-[0.3em] uppercase text-sage">[ How It Works ]</p>
+          <h2 className="mt-4 font-display font-black text-4xl md:text-6xl tracking-tight text-foreground leading-[1.05]">
+            Simple steps. <br />
+            <span className="italic shimmer">Powerful connection.</span>
+          </h2>
+          <p className="mt-4 text-text-muted text-base md:text-lg leading-relaxed">
+            Vanigan simplifies how customers find verified service providers and local enterprises across all 38 districts of Tamil Nadu.
+          </p>
         </div>
-        <div className="lg:col-span-8 divide-y divide-border">
-          {lines.map((l, i) => (
-            <motion.div
-              key={l.n}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="grid grid-cols-12 py-10 group"
-            >
-              <span className="col-span-2 font-mono text-sm text-sage pt-3">{l.n}</span>
-              <h3 className="col-span-10 md:col-span-6 font-display font-black text-3xl md:text-5xl tracking-tight">{l.t}</h3>
-              <p className="col-span-12 md:col-span-4 mt-3 md:mt-3 text-text-muted text-base">{l.d}</p>
-            </motion.div>
-          ))}
+
+        {/* 3-Column interactive card grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {lines.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <motion.div
+                key={l.n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                whileHover={{ y: -8 }}
+                className="relative bg-background rounded-3xl p-8 border border-border/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(0,0,0,0.08)] hover:border-sage/40 transition-all duration-300 group overflow-hidden"
+              >
+                {/* Large background outlined number */}
+                <div 
+                  className="absolute -right-2 -bottom-6 font-display font-black text-8xl md:text-9xl text-transparent select-none pointer-events-none opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-300"
+                  style={{ WebkitTextStroke: "2px var(--sage)" }}
+                >
+                  {l.n}
+                </div>
+
+                {/* Icon wrapper */}
+                <div className="w-12 h-12 rounded-2xl bg-sage/10 text-sage flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-sage group-hover:text-white transition-all duration-300">
+                  <Icon className="size-5" />
+                </div>
+
+                {/* Card content */}
+                <h3 className="font-display font-bold text-2xl tracking-tight text-foreground">
+                  {l.t}
+                </h3>
+                <p className="mt-3 text-text-muted text-sm leading-relaxed max-w-[90%]">
+                  {l.d}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

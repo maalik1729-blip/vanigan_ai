@@ -1,0 +1,230 @@
+/* Premium Modern: Plus Jakarta Sans + Inter + JetBrains Mono */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Modern Sans font stack ── */
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* ── Existing semantic token wires ── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bg-section: var(--bg-section);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-text-light: var(--text-light);
+  --color-text-muted: var(--text-muted);
+
+  /* ── Gopuram Warm new tokens (usable as Tailwind classes) ── */
+  --color-ink:          var(--ink);
+  --color-paper:        var(--paper);
+  --color-paper-2:      var(--paper-2);
+  --color-paper-3:      var(--paper-3);
+  --color-vermillion:   var(--vermillion);
+  --color-turmeric:     var(--turmeric);
+  --color-warm-muted:   var(--muted-warm);
+
+  /* ── Lifted tokens — Gate 58: no inline OKLCH ── */
+  /* Royal Blue to Gold/Navy gradient for CTABanner */
+  --color-cta-gradient: linear-gradient(135deg, oklch(0.96 0.03 80) 0%, oklch(0.90 0.06 80) 100%);
+
+  /* Interaction tokens */
+  --transition-btn: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  --ring-focus: 0 0 0 3px oklch(0.38 0.16 250 / 0.4); /* sapphire blue focus ring */
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SAPPHIRE BLUE & GOLD — Clean Professional Palette
+     Combining clean pure white, slate backgrounds, rich Sapphire Blue (loyalty),
+     and champagne gold accents for an ultra-clean, premium professional UI/UX.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  --ink:              oklch(0.15 0.015 250);  /* deep slate-900 navy-black         */
+  --paper:            oklch(1 0 0);           /* pure clean white                  */
+  --paper-2:          oklch(0.98 0.004 250);  /* slate-50 ultra-light bg           */
+  --paper-3:          oklch(0.95 0.008 250);  /* slate-100 card/input bg           */
+  --vermillion:       oklch(0.38 0.16 250);   /* rich Sapphire Blue (trust/loyalty)*/
+  --vermillion-soft:  oklch(0.48 0.18 250);   /* hover Sapphire Blue               */
+  --turmeric:         oklch(0.78 0.12 80);    /* champagne Gold                    */
+  --indigo:           oklch(0.18 0.06 250);   /* rich Royal Navy                   */
+  --indigo-deep:      oklch(0.10 0.04 250);   /* Midnight Navy                     */
+  --border-warm:      oklch(0.91 0.006 250);  /* clean slate-200 border            */
+  --muted-warm:       oklch(0.45 0.015 250);  /* slate-500 muted text              */
+
+  /* ── Token remapping: every existing className reference auto-updates ── */
+
+  --background:    var(--paper);           /* bg-background  → warm ivory         */
+  --bg-section:    var(--paper-2);         /* bg-bg-section  → deeper cream       */
+  --sage:          var(--vermillion);      /* text/bg-sage   → deep terracotta    */
+  --sage-soft:     var(--vermillion-soft); /* sage-soft      → soft terracotta    */
+  --forest:        var(--indigo);          /* bg-forest      → Tamil indigo       */
+  --forest-deep:   var(--indigo-deep);     /* bg-forest-deep → deeper indigo      */
+
+  --foreground:    var(--ink);             /* text-foreground → warm near-black   */
+  --text-light:    var(--paper);           /* text-text-light → warm ivory        */
+  --text-muted:    var(--muted-warm);      /* text-text-muted → warm grey-brown   */
+
+  --card:                  var(--paper-3);
+  --card-foreground:       var(--ink);
+  --popover:               var(--paper);
+  --popover-foreground:    var(--ink);
+  --primary:               var(--indigo);
+  --primary-foreground:    var(--paper);
+  --secondary:             var(--paper-2);
+  --secondary-foreground:  var(--ink);
+  --muted:                 var(--paper-2);
+  --muted-foreground:      var(--muted-warm);
+  --accent:                var(--vermillion);
+  --accent-foreground:     var(--paper);
+  --destructive:           oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: var(--border-warm);
+  --input:  var(--border-warm);
+  --ring:   var(--vermillion);
+}
+
+.dark {
+  --background: var(--indigo-deep);
+  --foreground: var(--paper);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  /* Gate 62 — overflow-x: clip on both html and body (never hidden) */
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  /* Modern clean display headings */
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.035em; font-weight: 700; }
+}
+
+@layer utilities {
+  .section-label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--vermillion);   /* terracotta section labels */
+  }
+  .container-x { max-width: 1280px; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .container-x { padding-inline: 2rem; } }
+
+  /* Gate 59 — CTA buttons must never wrap to two lines */
+  .btn-nowrap { white-space: nowrap; }
+
+  /* Interaction states — focus-visible ring utility */
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: var(--ring-focus);
+  }
+
+  /* Image hover-zoom wrapper */
+  .img-zoom { overflow: hidden; }
+  .img-zoom img { transition: transform 900ms cubic-bezier(.2,.7,.2,1); will-change: transform; }
+  .img-zoom:hover img { transform: scale(1.08); }
+
+  /* Animated underline */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size .45s ease;
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+
+  /* Shimmer — editorial: terracotta → turmeric → terracotta */
+  .shimmer {
+    background: linear-gradient(90deg, var(--vermillion) 0%, var(--turmeric) 50%, var(--vermillion) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee-slow { animation: marquee 60s linear infinite; }
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-marquee-reverse { animation: marquee-reverse 45s linear infinite; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-slow-zoom { animation: slow-zoom 14s ease-in-out infinite alternate; }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .animate-marquee, .animate-marquee-slow, .animate-marquee-reverse,
+  .shimmer, .animate-slow-zoom, .animate-float { animation: none !important; }
+}

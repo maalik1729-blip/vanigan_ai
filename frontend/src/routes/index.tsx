@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/vanigan/Navbar";
-import { Hero } from "@/components/vanigan/Hero";
 import {
-  CategoryGrid, HowItWorks, StatsSection, FeaturedBusinesses,
+  CategoryGrid, StatsSection, FeaturedBusinesses,
   CityExplorer, WhyVanigan, Testimonials, BlogPreview, CTABanner, Footer,
 } from "@/components/vanigan/Sections";
-import { ScrollProgress, MegaMarquee, ParallaxBand, StickyStatement } from "@/components/vanigan/Effects";
+import { ScrollProgress, ParallaxBand } from "@/components/vanigan/Effects";
 import {
   LoadingSequence, ScreenTransition, FloatingNav, StickyStackCards,
   HorizontalScrollCarousel, AsymmetricSlider, WebGLField, RenderPresentation,
@@ -17,7 +16,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Vanigan.org — Tamil Nadu's Most Trusted Business Directory" },
-      { name: "description", content: "Discover 12,000+ verified businesses across all 38 districts of Tamil Nadu. List your business free." },
+      { name: "description", content: "Discover 18,424+ verified businesses across all 38 districts of Tamil Nadu. List your business free." },
       { property: "og:title", content: "Vanigan.org — Tamil Nadu's Business Directory" },
       { property: "og:description", content: "Discover verified businesses across Tamil Nadu. List your business free." },
       { property: "og:type", content: "website" },
@@ -38,7 +37,6 @@ function Index() {
       <SpatialHero />
       <CategoryGrid />
       <MinimalistHierarchy />
-      <HowItWorks />
       <StatsSection />
       <NonPodiumGrid />
       <FeaturedBusinesses />
@@ -49,7 +47,6 @@ function Index() {
       <StickyStackCards />
       <WebGLField />
       <AsymmetricSlider />
-      <StickyStatement />
       <WhyVanigan />
       <Testimonials />
       <BlogPreview />

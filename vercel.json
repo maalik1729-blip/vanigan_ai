@@ -1,15 +1,21 @@
 {
+  "version": 2,
   "buildCommand": "npm install && npm run build",
   "installCommand": "npm install",
   "framework": null,
-  "rewrites": [
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/dist/client/assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/dist/client/assets/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/api/index.js"
+      "src": "/(.*)",
+      "dest": "/api/index.js"
     }
   ]
 }

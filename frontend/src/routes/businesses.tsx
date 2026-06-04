@@ -10,8 +10,7 @@ import {
 
 import { getBusinesses } from "../lib/api/businesses.functions";
 
-const _API = import.meta.env.VITE_API_BASE_URL || "https://vanigan-app-automation-5il0.onrender.com";
-void _API; // kept for potential future direct API calls
+const API = import.meta.env.VITE_API_BASE_URL || "https://vanigan-app-automation-5il0.onrender.com";
 
 export const Route = createFileRoute("/businesses")({
   head: () => ({

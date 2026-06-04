@@ -1,21 +1,4 @@
 {
-  "version": 2,
   "buildCommand": "npm install && npm run build",
-  "installCommand": "npm install",
-  "framework": null,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
-    }
-  ]
+  "installCommand": "npm install"
 }

@@ -24,39 +24,20 @@ try {
   console.log('Building frontend...');
   execSync('npm run build', { cwd: path.join(__dirname, 'frontend'), stdio: 'inherit' });
 
-  console.log('Structuring Vercel Build Output...');
-  const outputDir = path.join(__dirname, '.vercel', 'output');
+  console.log('Promoting frontend Vercel output to root...');
+  const rootOutputDir = path.join(__dirname, '.vercel', 'output');
+  const frontendOutputDir = path.join(__dirname, 'frontend', '.vercel', 'output');
   
-  // Clean previous output
-  if (fs.existsSync(outputDir)) {
-    fs.rmSync(outputDir, { recursive: true, force: true });
+  if (fs.existsSync(rootOutputDir)) {
+    fs.rmSync(rootOutputDir, { recursive: true, force: true });
   }
-  fs.mkdirSync(outputDir, { recursive: true });
-
-  // Copy static files
-  const clientDir = path.join(__dirname, 'frontend', 'dist', 'client');
-  const staticDir = path.join(outputDir, 'static');
-  if (fs.existsSync(clientDir)) {
-    copyDir(clientDir, staticDir);
-    console.log('Copied static files.');
+  
+  if (fs.existsSync(frontendOutputDir)) {
+    copyDir(frontendOutputDir, rootOutputDir);
+    console.log('Root Vercel Build Output structured successfully!');
+  } else {
+    throw new Error('Frontend Vercel build output not found!');
   }
-
-  // Copy functions
-  const serverDir = path.join(__dirname, 'frontend', 'dist', 'server');
-  const functionDir = path.join(outputDir, 'functions', '__server.func');
-  if (fs.existsSync(serverDir)) {
-    copyDir(serverDir, functionDir);
-    console.log('Copied server function.');
-  }
-
-  // Copy config
-  const configFile = path.join(__dirname, 'frontend', 'dist', 'config.json');
-  if (fs.existsSync(configFile)) {
-    fs.copyFileSync(configFile, path.join(outputDir, 'config.json'));
-    console.log('Copied config.json.');
-  }
-
-  console.log('Vercel Build Output structured successfully!');
 } catch (error) {
   console.error('Build failed:', error);
   process.exit(1);
